@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  app:
+    container_name: app
+    restart: always
+    depends_on:
+      - app_db
+    build:
+      context: .
+    ports:
+      - ${FA_PORT_EXTERNAL}:${FA_PORT}
+    env_file:
+      - ./.env
+    command: "sh start.sh"
+    volumes:
+      - ./:/code
+
+  app_db:
+    container_name: app_db
+    image: postgres:14-alpine
+    volumes:
+      - ./db/data:/var/lib/postgresql/data
+    env_file:
+      - ./.env
+    ports:
+      - ${POSTGRES_PORT_EXTERNAL}:${POSTGRES_PORT}

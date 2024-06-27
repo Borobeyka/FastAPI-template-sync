@@ -1,0 +1,11 @@
+/.idea/
+/.spyproject
+/.vs
+/.venv/
+/db
+/venv/
+**/.pycharm_helpers
+**/venv
+**/*.log*
+__pycache__/
+.env
