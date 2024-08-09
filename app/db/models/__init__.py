@@ -1,3 +1,4 @@
+# autoflake: skip_file
 # Add here your SQLAlchemy models
 
 # Usage:
