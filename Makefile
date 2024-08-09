@@ -6,13 +6,16 @@ help::
 	@echo "Available commands:"
 	@grep --color=never --extended-regexp --only '^\w[^: ]+:' Makefile | sed -E -e 's/^([^: ]+):/ - \1/'
 
-fmt:: isort black
+fmt:: isort black autoflake
 
 isort::
 	isort $(project) --py 311
 
 black::
 	black $(project) --target-version py311
+
+autoflake::
+	autoflake --in-place --remove-all-unused-imports $(project) -r
 
 fmt-check::
 	isort --check --diff $(project)
